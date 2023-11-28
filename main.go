@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/samar/data-structure-golang/datastructures"
 )
 
 func main() {
@@ -17,15 +19,15 @@ func main() {
 
 	switch choice {
 	case 1:
-		DemonstrateArray()
+		datastructures.DemonstrateArray()
 	case 2:
-		DemonstrateSlices()
+		datastructures.DemonstrateSlices()
 	case 3:
-		DemonstrateMaps()
+		datastructures.DemonstrateMaps()
 	case 4:
-		DemonstrateChannels()
+		datastructures.DemonstrateChannels()
 	case 5:
-		DemonstrateStrings()
+		datastructures.DemonstrateStrings()
 	default:
 		fmt.Println("Invalid option selected.")
 	}
