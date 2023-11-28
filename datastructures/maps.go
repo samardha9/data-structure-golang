@@ -1,17 +1,39 @@
 package datastructures
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"os"
+
+	"github.com/samar/data-structure-golang/types"
+)
 
 func DemonstrateMaps() {
-	m := make(map[string]int) // Declare a map with string keys and int values
+	// Read the JSON file
+	jsonFile, err := os.Open("/Users/samar/github/data-structures/data.json")
+	if err != nil {
+		fmt.Println("Error opening JSON file:", err)
+		return
+	}
+	defer jsonFile.Close()
 
-	// Initialize the map
-	m["first"] = 10
-	m["second"] = 20
-	m["third"] = 30
+	// Read the opened jsonFile as a byte array.
+	byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	fmt.Println("Map demonstration:")
-	for key, value := range m {
-		fmt.Printf("Key: %s, Value: %d\n", key, value)
+	// Initialize a map with string keys to hold the data from JSON
+	var colorData types.ColorData
+
+	// Unmarshal byteArray into the map
+	err = json.Unmarshal(byteValue, &colorData)
+	if err != nil {
+		fmt.Println("Error unmarshalling JSON:", err)
+		return
+	}
+
+	fmt.Println("Map demonstration with colors from JSON:")
+	for key, color := range colorData.Colors {
+		fmt.Printf("Key: %d, Color: %s, Hex Code: %s\n", key, color.Color, color.Code.Hex)
+
 	}
 }
