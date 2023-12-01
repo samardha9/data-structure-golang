@@ -13,6 +13,8 @@ func main() {
 	fmt.Println("Select 3 - Maps")
 	fmt.Println("Select 4 - Channels")
 	fmt.Println("Select 5 - Strings")
+	fmt.Println("Select 6 - Structs")
+	fmt.Println("Select 7 - LinkedLists")
 
 	var choice int
 	fmt.Scan(&choice)
@@ -28,6 +30,10 @@ func main() {
 		datastructures.DemonstrateChannels()
 	case 5:
 		datastructures.DemonstrateStrings()
+	case 6:
+		datastructures.DemonstrateStructs()
+	case 7:
+		datastructures.DemonstrateLinkedList()
 	default:
 		fmt.Println("Invalid option selected.")
 	}
